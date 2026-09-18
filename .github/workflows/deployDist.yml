@@ -4,5 +4,11 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-            - name: "greet user"
-              run: echo "hello world!"
+            - name: Get code
+              run: | 
+                echo "cloning repo.."
+                echo "${{toJson(github)}}"
+                git clone "https://github.com/${{github.repository}}.git"
+
+
+                
