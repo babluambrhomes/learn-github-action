@@ -1,0 +1,14 @@
+name: my first action
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    hello:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: say hello
+              run: eco "hello from git hub action"
