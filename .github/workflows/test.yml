@@ -11,4 +11,4 @@ jobs:
 
         steps:
             - name: say hello
-              run: eco "hello from git hub action"
+              run: echo "hello from git hub action"
