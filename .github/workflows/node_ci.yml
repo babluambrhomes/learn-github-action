@@ -1,33 +1,39 @@
-name: node ci
+name: CI
 
-on: 
-    push:
+on:
+    push: 
         branches:
             - main
-            - workflow_dispatch
+
+    pull_request:
+        branches:
+            - main
+
+    workflow_dispatch:
 
 jobs:
     build:
         runs-on: ubuntu-latest
 
         steps:
-            - name: checkout code
+            - name: checkout repository
               uses: actions/checkout@v4
-
+            
             - name: setup node.js
               uses: actions/setup-node@v4
+
               with:
                 node-version: 22
                 cache: npm
 
-            - name: Show Node version
-              run: node --version
-
-            - name: Show npm version
-              run: npm --version
-
             - name: install dependencies
               run: npm ci
 
-            - name: build application
+            - name: run lint
+              run: npm run lint
+
+            - name: run test
+              run: npm run test
+
+            - name: build appliction
               run: npm run build
