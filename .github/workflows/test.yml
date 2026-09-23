@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - main
+            - workflow_dispatch
 
 jobs:
     hello:
@@ -12,3 +13,15 @@ jobs:
         steps:
             - name: say hello
               run: echo "hello from git hub action"
+
+            - name: Check Node
+              run: node --version
+
+            - name: Check npm
+              run: npm --version
+
+            - name: check directory
+              run: pwd
+
+            - name: Show files
+              run: ls -la
