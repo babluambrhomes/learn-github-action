@@ -15,9 +15,6 @@ jobs:
     build:
         runs-on: ubuntu-latest
 
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-
         steps:
             - name: checkout repository
               uses: actions/checkout@v4
@@ -31,6 +28,9 @@ jobs:
 
             - name: install dependencies
               run: npm ci
+
+            - name: print git key value
+              run: echo ${{ secrets.DATABASE_URL }}
 
             - name: run lint
               run: npm run lint
